@@ -1,0 +1,618 @@
+/* SJ Developments - styles.css */
+:root{
+  /* Color palette: jade green, gold, white */
+  --primary: #00A86B; /* jade green */
+  --accent: #D4AF37;  /* gold */
+  --text: #083927;    /* dark jade / deep green for body text */
+  --muted: #6b8f7a;
+  --bg: #ffffff;
+  --container-width:1100px;
+  /* Replace with your own image or override this variable in a separate CSS file */
+  /* Default: local image at images/hero.jpg (recommended for production). If not present, the curated Unsplash image below is used as a visual fallback. */
+  --hero-image: url('images/hero.jpg');
+}
+
+/* Basic reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+}
+.container{
+  width:90%;
+  max-width:var(--container-width);
+  margin:0 auto;
+  /* Nudge page content slightly to the right for improved neatness.
+     Use a responsive inline-start padding so it scales across viewports. */
+  padding-inline-start: clamp(0.5rem, 1.2vw, 1.25rem);
+}
+
+/* Header / Nav */
+.site-header{position:fixed;left:0;right:0;top:0;z-index:30;background:linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);} 
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
+.logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+.logo-text{font-weight:700;color:var(--primary);font-size:1.05rem}
+.logo-img{width:170px;height:auto;display:block}
+
+/* Slightly smaller logo on very small screens to ensure it fits nicely below nav */
+@media (max-width:480px){
+  .logo-img{width:96px}
+}
+.nav-links{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
+.nav-links a{
+  color:var(--text);
+  text-decoration:none;
+  padding:0.45rem 0.75rem; /* increased padding for better click target */
+  border-radius:6px;
+  font-weight:700; /* bold nav text */
+  font-size:1.05rem; /* slightly larger */
+  position:relative; /* needed for the underline pseudo-element */
+}
+
+/* gold hover underline */
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%) scaleX(0);
+  transform-origin:center;
+  bottom:-6px;
+  height:3px;
+  width:60%;
+  background:var(--accent);
+  border-radius:2px;
+  transition:transform 220ms cubic-bezier(.2,.9,.2,1), opacity 180ms ease;
+  opacity:0.0;
+}
+.nav-links a:hover::after,
+.nav-links a:focus::after{
+  transform:translateX(-50%) scaleX(1);
+  opacity:1;
+}
+.nav-links a:focus{outline: none}
+.nav-toggle{display:none;background:none;border:0;font-size:1.25rem}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  display:grid;align-items:center;position:relative;color:#fff;
+  /* Use the local image first (via the --hero-image variable). If the local image isn't available, the second URL acts as a fallback layer to ensure visual continuity. */
+  background-image: var(--hero-image), url('images/yellow\ bulldozer.jpg');
+  background-size:cover;background-position:center center;background-attachment:scroll;
+}
+.hero::before{content:"";position:absolute;inset:0;/* brand-matched overlay: dark jade at top fading to subtle dark to preserve readable white text */background:linear-gradient(180deg, rgba(8,57,39,0.45), rgba(0,0,0,0.25));}
+.hero-overlay{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.1rem; /* cake-tier spacing */
+  padding:6vh 0; /* keep some breathing room on very small screens */
+  text-align:center;
+}
+.hero-title{font-size:clamp(2rem,5vw,6rem);margin:0; font-family: 'Bebas Neue', sans-serif; font-weight:400; letter-spacing:0.02em;line-height:1}
+.hero-sub{font-size:1.50rem;max-width:68ch;margin:0;color:rgba(255,255,255,0.94);font-weight:700}
+.btn{display:inline-block;background:var(--accent);color:#111;padding:0.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:600}
+
+/* Hero scroll arrow (centered at bottom of hero) */
+.hero-scroll{
+  /* keep the scroll arrow within the centered stack (cake tiers) */
+  position:relative;
+  background:transparent;
+  border:0;
+  padding:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  margin-top:0.6rem;
+}
+.hero-scroll:focus{outline:3px solid rgba(255,255,255,0.14);border-radius:999px}
+.hero-scroll .arrow{
+  display:block;
+  width:26px;
+  height:26px;
+  border-right:4px solid #fff;
+  border-bottom:4px solid #fff;
+  transform:rotate(45deg);
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  transition:transform 220ms ease, opacity 220ms ease;
+  opacity:0.95;
+  box-sizing:border-box;
+}
+
+/* subtle bounce to indicate interactivity */
+@keyframes arrow-bounce{
+  0%,100%{transform:translateY(0) rotate(45deg)}
+  50%{transform:translateY(8px) rotate(45deg)}
+}
+.hero-scroll .arrow{animation:arrow-bounce 1.6s infinite cubic-bezier(.2,.9,.2,1)}
+
+/* pressed state: move down slightly and stop bounce */
+.hero-scroll.clicked .arrow{transform:translateY(8px) rotate(45deg);animation:none}
+
+@media (max-width:600px){
+  .hero-overlay{padding:10vh 0}
+  .hero-sub{font-size:1.05rem;max-width:44ch}
+  .hero-scroll .arrow{width:22px;height:22px;border-right:3px solid #fff;border-bottom:3px solid #fff}
+}
+
+/* Sections */
+.section{padding:5rem 0}
+.section h2{margin-top:0;font-size:clamp(1.5rem,3.6vw,2.25rem);font-weight:400;}
+.project-subtitle{font-size:2em;margin:0.5rem 0 1.5rem;color:var(--text);font-weight:600;text-align:center}
+
+/* About two-column layout: heading on left, square info box on right */
+.about-grid{display:grid;grid-template-columns:1fr 560px;gap:2rem;align-items:center}
+.about-heading{display:flex;align-items:center}
+.about-heading h2{margin:0;font-size:4em;line-height:1.02; font-weight:400}
+/* Animate heading: slide in from left when scrolled into view */
+.about-heading.reveal-on-scroll{transform:translateX(-36px);opacity:0;transition:transform 620ms cubic-bezier(.2,.9,.2,1),opacity 420ms ease}
+.about-heading.reveal-on-scroll.in-view{transform:none;opacity:1}
+.aside-box{
+  width:100%;
+  max-width:560px; /* increased width to better fit paragraph */
+  aspect-ratio:4/3; /* rectangular: wider than tall to accommodate text */
+  background:#053925; /* dark jade */
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.6rem 1.5rem; /* a bit more padding for the larger box */
+  border-radius: 1px;
+  font-weight:300;
+  text-align:center;
+  transform:translateY(28px);
+  opacity:0;
+  transition:transform 520ms cubic-bezier(.2,.9,.2,1), opacity 420ms ease;
+}
+.aside-box p{margin:0;color:#fff;font-size:1.125rem;line-height:1.4}
+/* Make paragraph adapt to box: wrap, scale and align left inside the box */
+.aside-box p{
+  display:block;
+  width:100%;
+  max-width:100%;
+  margin:0;
+  color:#fff;
+  font-size:clamp(1.2rem,1.7vw,3.0rem);
+  line-height:1.45;
+  text-align:left; /* changed alignment */
+  overflow-wrap:break-word;
+  word-break:break-word;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+}
+.aside-box a{color:rgba(255,255,255,0.95);text-decoration:underline}
+.reveal-on-scroll.in-view{transform:none;opacity:1}
+
+@media (max-width:1100px){
+  .about-grid{grid-template-columns:1fr 380px}
+  .aside-box{max-width:380px}
+}
+
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:1rem}
+  .aside-box{max-width:420px;margin:0 auto}
+}
+
+/* Services grid */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:1rem}
+.service{
+  background:rgb(186, 146, 56); /* accent/gold */
+  color:#ffffff;
+  border-radius:1px;
+  padding:1.25rem; 
+  display:flex;
+  flex-direction:column; /* stack icon, title, description */
+  gap:0.75rem;
+  align-items:center; /* center icon + titles horizontally */
+  text-align:center;
+}
+.service h3{margin:0;color:#fff;font-size:1.35rem}
+.service p{margin:0;color:rgba(255,255,255,0.92);line-height:1.45;font-size:1rem}
+
+/* larger icon sizing: inline SVGs use currentColor; use gold accent for icons */
+.service .service-icon{flex:0 0 64px;width:64px;height:64px;color:var(--accent);}
+
+/* user-supplied image support: size and contain so uploaded SVG/PNG behave like the inline icon */
+.service-img{flex:0 0 64px;width:64px;height:64px;display:block;object-fit:contain}
+
+@media (max-width:800px){
+  .service .service-icon,.service-img{width:48px;height:48px;flex:0 0 48px}
+  .service{padding:1rem}
+}
+
+#services{
+  background-image: url('images/grey\ wall\ 2.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
+  padding: 3.5rem 0;
+  position: relative;
+}
+
+/* Add overlay for better text readability */
+#services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(243, 244, 246, 0.85);
+  z-index: 1;
+}
+
+#services .container {
+  position: relative;
+  z-index: 2;
+}
+.services-carousel{position:relative;margin-top:1rem;overflow:visible;padding:0.5rem 0}
+.services-track{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0.5rem 1.25rem;scroll-padding-inline:1.25rem}
+.services-track::-webkit-scrollbar{display:none}
+.services-track .service{flex:0 0 320px;scroll-snap-align:start}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:#000;border:0;width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,0.35);font-size:28px;color:#fff;z-index:9999;opacity:0.9;transition:opacity 180ms ease, transform 160ms ease}
+.carousel-btn.prev{left:12px}
+.carousel-btn.next{right:12px}
+.carousel-btn:focus{outline:3px solid rgba(255,255,255,0.08)}
+
+/* inactive state when at the rail end */
+.carousel-btn.inactive{opacity:0.42;pointer-events:none;filter:grayscale(8%)}
+
+/* SVG inside the button uses currentColor so it inherits the dark jade stroke */
+.carousel-btn svg{width:28px;height:28px;display:block}
+.carousel-btn svg path{stroke:currentColor;fill:none}
+.carousel-btn:hover{opacity:1;transform:translateY(-2px)}
+.carousel-btn:focus{opacity:1;transform:translateY(-2px);outline:3px solid rgba(5,57,37,0.12)}
+
+/* Ensure each project card is a positioned container so absolute figcaptions
+  and pseudo-elements are positioned correctly on all viewports */
+.project{position:relative}
+
+/* On medium+ screens convert the horizontal track into a wrapped grid so items fit on page
+   - keep carousel behavior on small screens (touch/scroll)
+   - hide carousel buttons on wider layouts where all items fit
+*/
+@media (min-width:900px){
+  .services-track{flex-wrap:wrap;overflow:visible;scroll-snap-type:none;padding:0;gap:1.25rem}
+  /* two columns on medium screens */
+  .services-track .service{flex:0 0 calc(50% - 0.625rem);max-width:calc(50% - 0.625rem)}
+  .carousel-btn{display:none}
+  /* Projects: use CSS Grid on medium+ screens so items form neat rows/columns */
+  .projects-track{
+    display:grid;
+    /* Force exactly 3 columns on desktop with a tighter min width for a denser fit */
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    gap:1rem; /* small spacing between images */
+    padding:0;
+    justify-content:center; /* center the grid within the container */
+  }
+  /* Make project images square (equal width & height) by using aspect-ratio.
+     object-fit:cover preserves nice cropping. No fixed heights so grid controls size. */
+  .project-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 240ms ease}
+  /* Centered static caption in the middle of the image for desktop */
+  .project figcaption{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(5, 57, 37, 0.808); /* dark jade */
+    color:#fff;
+    padding:0.6rem 0.9rem;
+    font-weight:500;
+    font-size:1.05rem;
+    text-align:center;
+    border-radius:2px;
+    z-index:4;
+    max-width:90%;
+    box-shadow:0 8px 18px rgba(5,57,37,0.18);
+    opacity:1; /* always visible on desktop */
+    pointer-events:auto;
+  }
+  .projects-track .project{width:100%;max-width:none}
+  /* hide project carousel arrows when grid layout is active */
+  .projects-prev, .projects-next{display:none}
+}
+
+@media (min-width:1200px){
+  /* three columns on large screens */
+  .services-track .service{flex:0 0 calc(33.333% - 0.833rem);max-width:calc(33.333% - 0.833rem)}
+  /* expand projects grid to 3 columns on large screens */
+  .projects-track{grid-template-columns: repeat(3, minmax(0, 1fr));}
+}
+
+/* Projects (mobile / small screens): keep the horizontal scroll/rail behavior */
+@media (max-width:899px){
+  .projects-carousel{position:relative;margin-top:1rem}
+  .projects-carousel{overflow:visible}
+  #projects .container{max-width:1400px;width:92%;margin:0 auto}
+  .projects-track{display:flex;gap:0.75rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0.8rem 1rem;scroll-padding-inline:1rem}
+  .projects-track::-webkit-scrollbar{display:none}
+  .projects-track .project{flex:0 0 320px;scroll-snap-align:start;cursor:pointer;transition:transform 140ms ease}
+  .project{background:#fff;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;align-items:stretch;box-shadow:0 6px 14px rgba(15,15,15,0.05);position:relative}
+  /* Mobile: use square images as well so width and height stay consistent */
+  .project-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 240ms ease}
+  .project figcaption{
+    position:absolute;left:0;right:0;top:50%;
+    background:rgba(5,57,37,0.85);
+    color:#fff;padding:0.8rem 0;font-weight:600;text-align:center;transform:translateY(-50%);font-size:1.1rem;
+  }
+
+  /* Give the overlay a tiny horizontal inset so text doesn't hug the edges on narrow images */
+  .project figcaption{padding-inline:0.6rem}
+  .project:hover .project-img{transform:scale(1.02)}
+  .project:hover{transform:translateY(-3px)}
+}
+
+/* Project Modal */
+.modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal.active{display:flex}
+.modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.85);cursor:pointer}
+.modal-content{position:relative;background:#fff;border-radius:2px;max-width:60vw;max-height:80vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(0,0,0,0.7);color:#fff;border:0;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;z-index:10001;transition:background 200ms ease}
+.modal-close:hover{background:rgba(0,0,0,0.9)}
+.modal-body{display:grid;grid-template-columns:1.8fr 1fr;gap:1rem;padding:1.5rem}
+.modal-image-container{position:relative;margin-bottom:0.75rem}
+.modal-image-container img{width: 500px;height:350px;object-fit:cover;border-radius:1px}
+.modal-nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.7);color:#fff;border:0;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 200ms ease}
+.modal-nav-btn:hover{background:rgba(0,0,0,0.9)}
+.modal-nav-btn svg{width:24px;height:24px}
+.modal-prev{left:1rem}
+.modal-next{right:1rem}
+.modal-thumbnails{display:flex;gap:0.5rem;justify-content:center}
+.modal-thumb{width:70px;height:50px;object-fit:cover;border-radius:4px;cursor:pointer;opacity:0.7;transition:opacity 200ms ease,border 200ms ease;border:2px solid transparent}
+.modal-thumb:hover{opacity:1}
+.modal-thumb.active{opacity:1;border-color:rgba(5,57,37,0.85)}
+.modal-info{
+  padding:0;
+  /* Add a modest left inset so modal text doesn't sit flush to the edge — improves visual breathing room */
+  padding-inline-start: clamp(0.8rem, 2.2vw, 2rem);
+  padding-inline-end: 0.9rem; /* keep a little right padding for balance */
+}
+
+/* Modal branding (logo) shown beneath project details */
+.modal-branding{
+  margin-top:1.25rem;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start; /* keep the logo on the left to preserve whitespace on the left */
+  gap:0.75rem;
+}
+.modal-logo{
+  height:56px;
+  width:auto;
+  object-fit:contain;
+  border-radius:4px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.modal-info h2{margin:0 0 0.75rem;color:rgba(5,57,37,0.85);font-size:1.9rem;font-family:'Bebas Neue',sans-serif}
+.modal-description p{color:var(--text);line-height:1.5;margin-bottom:1rem;font-size:0.95rem}
+.modal-desc-list{margin:0 0 1rem;padding-left:1.25rem}
+.modal-desc-list li{margin:0.35rem 0;line-height:1.45}
+.modal-details h3{color:rgb(186, 146, 56);margin:0 0 0.5rem;font-size:1.5rem}
+.modal-details ul{list-style:none;padding:0;margin:0}
+.modal-details li{margin:0.4rem 0;color:var(--text);font-size:0.9rem}
+.modal-details strong{color:rgba(5,57,37,0.85)}
+
+/* On touch devices show caption below image (no hover) and reduce projects container */
+@media (hover: none) and (max-width:900px){
+  .project{align-items:stretch}
+  /* On touch devices the caption becomes a static element below the image.
+     Left-align it and add a small start inset so content sits comfortably inside the box. */
+  .project figcaption{position:static;transform:none;background:transparent;color:var(--muted);padding:0.8rem 0;padding-inline-start:0.9rem;padding-inline-end:0.75rem;text-align:left}
+  /* make the projects container narrower on touch devices for better fit */
+  #projects .container{max-width:720px;width:94%;margin:0 auto}
+}
+
+/* Responsive modal behaviour: make modal static (no page scroll), fit viewport and rearrange gallery */
+@media (max-width:900px){
+  .project-img{height:240px}
+  /* Make modal full-screen and remove internal scrollbars */
+  .modal-content{
+    width:100%;
+    height:100vh;
+    max-width:100vw;
+    max-height:80vh;
+    border-radius:0;
+    overflow:hidden; /* prevent internal scroll */
+    box-shadow:none;
+  }
+
+  /* Arrange gallery vertically: image (flex:1) then thumbnails (auto) */
+  .modal-body{display:flex;flex-direction:column;height:100%;padding:0;margin:0}
+  .modal-image-container{flex:1;display:flex;align-items:center;justify-content:center;padding:0.5rem}
+  .modal-image-container img{max-width:100%;max-height:calc(100vh - 120px);height:auto;object-fit:contain;border-radius:0}
+
+  /* Thumbnails area sits below image; horizontal scroll allowed for thumbnails only */
+  .modal-thumbnails{flex:0 0 auto;display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0.75rem;background:transparent}
+  .modal-thumb{width:72px;height:50px;flex:0 0 auto}
+
+  /* Smaller nav/close buttons for touch */
+  .modal-nav-btn{width:40px;height:40px}
+  .modal-close{top:0.5rem;right:0.5rem}
+
+  /* Ensure no vertical scrollbars appear on modal */
+  .modal-overlay{overflow:hidden}
+}
+
+@media (max-width:480px){
+  .modal-content{width:100%;height:100vh}
+  .modal-body{padding:0}
+  .modal-image-container img{max-height:calc(100vh - 110px)}
+  .modal-thumb{width:60px;height:44px}
+  .modal-logo{height:44px}
+}
+
+/* Contact grid */
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start}
+.contact-form{display:flex;flex-direction:column;gap:0.5rem}
+.contact-form input,.contact-form textarea{padding:0.6rem;border-radius:6px;border:1px solid #ddd}
+.contact-info{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(10,10,10,0.04)}
+
+/* Footer */
+.site-footer{
+  padding:1.25rem 0;
+  background:#053925; /* jade green footer */
+  color:#fff;
+  margin-top:2rem;
+}
+.site-footer .container{display:block}
+.site-footer .footer-grid{display:flex;gap:2rem;justify-content:space-between;align-items:flex-start;padding:2rem 0}
+.site-footer .footer-nav h3,.site-footer .footer-contact h3{margin:0 0 0.5rem;color:rgba(255,255,255,0.98)}
+.site-footer .footer-nav ul{list-style:none;padding:0;margin:0}
+.site-footer .footer-nav li{margin:0.35rem 0}
+.site-footer .small-footer-logo{
+  display:block;
+  margin-top:0.75rem;
+  width:120px; /* adjust as needed */
+  height:auto;
+  object-fit:contain;
+  border-radius:4px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.site-footer a{color:rgba(255,255,255,0.95);text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.site-footer .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:0.75rem 0;text-align:center}
+.site-footer small{color:rgba(255,255,255,0.95)}
+
+/* Responsive */
+@media (max-width:800px){
+  .nav-toggle{display:inline-block}
+  .nav-links{position:absolute;right:1rem;top:64px;background:#fff;padding:1rem;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.08);flex-direction:column;display:none}
+  .nav-links.show{display:flex}
+  .hero-overlay{padding:24vh 0 12vh}
+  .contact-grid{grid-template-columns:1fr}
+  .site-footer .footer-grid{flex-direction:column;gap:1rem}
+  .services-track .service{flex:0 0 78%;}
+  .carousel-btn.prev{left:6px}
+  .carousel-btn.next{right:6px}
+}
+
+@media (max-width:480px){
+  .site-footer .small-footer-logo{width:96px}
+}
+
+/* Small helpers */
+:focus{outline:3px solid rgba(0,168,107,0.12);outline-offset:3px}
+
+/* Clients Section */
+#clients {
+  background: #f8f9fa;
+  padding: 3rem 0;
+}
+
+#clients h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+  font-size: 2.5rem;
+}
+
+.clients-carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.clients-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll-clients 20s linear infinite;
+  width: max-content;
+}
+
+.client-logo {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.client-logo:hover {
+  transform: translateY(-5px);
+}
+
+.client-logo img {
+  max-width: 190px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.client-logo:hover img {
+  filter: grayscale(0%);
+}
+
+@keyframes scroll-clients {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.clients-track:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments for clients */
+@media (max-width: 800px) {
+  #clients h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .client-logo {
+    width: 140px;
+    height: 100px;
+  }
+  
+  .client-logo img {
+    max-width: 110px;
+    max-height: 70px;
+  }
+  
+  .clients-track {
+    gap: 1.5rem;
+    animation-duration: 15s;
+  }
+}
+
+/* WhatsApp floating action button */
+.whatsapp-fab{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#25D366; /* WhatsApp green */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  z-index:10002;
+  text-decoration:none;
+  transition:transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+.whatsapp-fab svg{display:block}
+.whatsapp-fab:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,0.30)}
+.whatsapp-fab:focus{outline:3px solid rgba(37,211,102,0.18)}
+
+@media (max-width:480px){
+  .whatsapp-fab{right:12px;bottom:12px;width:48px;height:48px}
+  .whatsapp-fab svg{width:22px;height:22px}
+}
