@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function(){
       title: 'Renovation Of Admin Block And 1x3 Classroom ',
       description: 'Scope of work :  Construction of new Grade R facility,Construction of play area for Grade R Leaners,Renovation of admin block and 1 x 3 classroom blockPaving of assembly area',
       location: 'Modishane Primary School,GoodHope,Limpopo',
-      date: 'June 2022',
+      date: 'June 2023',
       type: 'Renovation',
       images: [
         'images/Projects/Modishane/IMG-20251106-WA0021.jpg',
@@ -183,9 +183,9 @@ document.addEventListener('DOMContentLoaded', function(){
       date: 'October 2024',
       type: 'General Building',
       images: [
-        'images/Projects/Kgomotlou/DJI_0442.JPG',
-        'images/Projects/Kgomotlou/DJI_0379.JPG',
-        'images/Projects/Kgomotlou/DJI_0097.JPG',
+        'images/projects/Kgomotlou/DJI_0097.JPG',
+        'images/projects/Kgomotlou/DJI_0440.JPG',
+        'images/projects/Kgomotlou/DJI_0379.JPG',
         'images/projects/Kgomotlou/DJI_0444.JPG',
         'images/Projects/Kgomotlou/DJI_0439.JPG'
       ]
