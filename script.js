@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const projectData = {
     modishane: {
       title: 'Renovation Of Admin Block And 1x3 Classroom ',
-      description: 'Scope of work :  Construction of new Grade R facility,Construction of play area for Grade R Leaners,Renovation of admin block and 1 x 3 classroom blockPaving of assembly area',
+      description: 'Scope of work :  Construction of new Grade R facility,Construction of play area,Renovation of admin block and 1 x 3 classroom blockPaving',
       location: 'Modishane Primary School,GoodHope,Limpopo',
       date: 'June 2023',
       type: 'Renovation',
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function(){
     },
     kgomotlou: {
       title: 'Storm Water Management On Ablution Toilets',
-      description: 'Scope works : Construction of Screen wall, Construction of v-drain ,Paving around the  toilet',
+      description: 'Scope of work: Construction of Screen wall, Construction of v-drain ,Paving around the  toilet',
       location: 'Kgomotlou Primary School,Limpopo',
       date: 'October 2024',
       type: 'General Building',
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function(){
     },
     pitsaneng: {
       title: 'Storm Water Management On Ablution Toilets',
-      description: 'Scope works : Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
+      description: 'Scope of work: Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
       location: 'Pitsaneng Primary School,Limpopo',
       date: 'October 2024',
        type: 'General Building',
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function(){
     },
     letau: {
       title: 'Storm Water Management On Ablution Toilets',
-      description: 'Scope works : Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
+      description: 'Scope of work : Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
       location: 'Letau Secondary School, Limpopo',
       date: 'October 2024',
       type: 'General Building',

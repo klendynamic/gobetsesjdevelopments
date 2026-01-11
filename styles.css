@@ -40,7 +40,7 @@ body{
 
 /* Slightly smaller logo on very small screens to ensure it fits nicely below nav */
 @media (max-width:480px){
-  .logo-img{width:96px}
+  .logo-img{width: 105px}
 }
 .nav-links{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
 .nav-links a{
@@ -425,7 +425,7 @@ body{
   /* Arrange gallery vertically: image (flex:1) then thumbnails (auto) */
   .modal-body{display:flex;flex-direction:column;height:100%;padding:0;margin:0}
   .modal-image-container{flex:1;display:flex;align-items:center;justify-content:center;padding:0.5rem}
-  .modal-image-container img{max-width:100%;max-height:calc(100vh - 120px);height:auto;object-fit:contain;border-radius:0}
+  .modal-image-container img{max-width:90%;max-height:calc(100vh - 12px);height:auto;object-fit:contain;border-radius:0}
 
   /* Thumbnails area sits below image; horizontal scroll allowed for thumbnails only */
   .modal-thumbnails{flex:0 0 auto;display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0.75rem;background:transparent}

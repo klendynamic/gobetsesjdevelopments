@@ -1,0 +1,106 @@
+/* Mobile-only overrides to make modal content static and fit viewport */
+@media (max-width: 900px) {
+  /* General modal container: full-screen fit without internal scrolling */
+  #project-modal .modal-content,
+  #service-modal .modal-content {
+    width: 100%;
+    max-width: 100%;
+    height: calc(100vh - 12px);
+    max-height: 70vh;
+    margin: 12px 0;
+    border-radius: 1px;
+    overflow: hidden; /* prevent internal scrollbars */
+    box-shadow: none;
+  }
+
+  /* Layout inside modal: column flow that fits available height */
+  #project-modal .modal-body,
+  #service-modal .modal-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Reduce main image height so info fits below */
+  #project-modal .modal-image-container,
+  #service-modal .modal-image-container {
+    flex: 0 0 140px;
+    height: 190px;
+    padding: 6px 8px 4px 8px;
+  }
+
+  /* Make images cover the smaller area */
+  #project-modal #modal-main-image,
+  #service-modal .modal-image-container img,
+  #project-modal .modal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2.5px;
+    display: block;
+  }
+
+  /* Thumbnails: smaller and hidden overflow so they don't add scroll height */
+  #project-modal .modal-thumbnails,
+  #service-modal .modal-thumbnails {
+    display: flex;
+    gap: 6px;
+    padding: 6px 8px 4px 8px;
+    flex: 0 0 auto;
+    max-height: 50px;
+    overflow: hidden;
+  }
+  #project-modal .modal-thumb,
+  #service-modal .modal-thumb {
+    width: 56px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  /* Info area: reduce spacing and font sizes to keep everything static */
+  #project-modal .modal-info,
+  #service-modal .modal-info {
+    flex: 1 1 auto;
+    padding: 8px 10px;
+    overflow: hidden;
+    font-size: 0.95rem;
+    line-height: 1.15;
+  }
+
+  #project-modal #modal-title,
+  #service-modal .modal-info h2 {
+    font-size: 1.50rem;
+    margin: 0 0 6px 0;
+  }
+
+  #project-modal #modal-desc,
+  #service-modal .modal-description p,
+  #project-modal .modal-desc-list li,
+  #service-modal .modal-desc-list li,
+  #project-modal .modal-details li,
+  #service-modal .modal-details li {
+    font-size: 0.90rem;
+    margin: 0 0 6px 0;
+  }
+
+  /* Make close button smaller and tuck in */
+  #project-modal .modal-close,
+  #service-modal .modal-close {
+    top: 8px;
+    right: 8px;
+    font-size: 1.3rem;
+    padding: 4px 8px;
+  }
+
+  /* Reduce branding/logo size inside modal */
+  #project-modal .modal-branding .modal-logo,
+  #service-modal .modal-branding .modal-logo {
+    max-width: 90px;
+    height: auto;
+    margin-top: 6px;
+  }
+
+  /* Ensure the overlay uses start alignment so modal sits nicely on small screens */
+  .modal .modal-overlay { align-items: flex-start; }
+}
