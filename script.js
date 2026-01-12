@@ -169,33 +169,32 @@ document.addEventListener('DOMContentLoaded', function(){
       type: 'Renovation',
       images: [
         'images/Projects/Modishane/IMG-20251106-WA0021.jpg',
-        'images/Projects/Modishane/IMG-20251106-WA0020.jpg', // Add more images as needed
+        'images/Projects/Modishane/IMG-20251106-WA0020.jpg',
         'images/Projects/Modishane/IMG-20251106-WA0017.jpg',
         'images/Projects/Modishane/IMG-20251106-WA0024.jpg',
-        'images/Projects/Modishane/IMG-20251106-WA0018.jpg',
-
+        'images/Projects/Modishane/IMG-20251106-WA0018.jpg'
       ]
     },
     kgomotlou: {
       title: 'Storm Water Management On Ablution Toilets',
-      description: 'Scope of work: Construction of Screen wall, Construction of v-drain ,Paving around the  toilet',
+      description: 'Scope of work: Construction of Screen wall, Construction of v-drain ,Paving around the  toilet',
       location: 'Kgomotlou Primary School,Limpopo',
       date: 'October 2024',
       type: 'General Building',
       images: [
-        'images/projects/Kgomotlou/DJI_0097.JPG',
-        'images/projects/Kgomotlou/DJI_0379.JPG',
-        'images/projects/Kgomotlou/DJI_0439.JPG',
-        'images/projects/Kgomotlou/DJI_0440.JPG',
+        'images/Projects/Kgomotlou/DJI_0097.JPG',
+        'images/Projects/Kgomotlou/DJI_0379.JPG',
+        'images/Projects/Kgomotlou/DJI_0439.JPG',
+        'images/Projects/Kgomotlou/DJI_0440.JPG',
         'images/Projects/Kgomotlou/DJI_0442.JPG'
       ]
     },
     pitsaneng: {
       title: 'Storm Water Management On Ablution Toilets',
-      description: 'Scope of work: Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
+      description: 'Scope of work: Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
       location: 'Pitsaneng Primary School,Limpopo',
       date: 'October 2024',
-       type: 'General Building',
+      type: 'General Building',
       images: [
         'images/Projects/Pitsaneng/DJI_0351.JPG',
         'images/Projects/Pitsaneng/DJI_0350.JPG',
@@ -205,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function(){
     },
     letau: {
       title: 'Storm Water Management On Ablution Toilets',
-      description: 'Scope of work : Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
+      description: 'Scope of work : Construction of Retaining wall, Construction of v-drain ,Paving around the  toilet',
       location: 'Letau Secondary School, Limpopo',
       date: 'October 2024',
       type: 'General Building',
@@ -215,25 +214,22 @@ document.addEventListener('DOMContentLoaded', function(){
         'images/Projects/Letau/DJI_0421.JPG',
         'images/Projects/Letau/DJI_0422.JPG'
       ]
-    }
-    ,
-     DepartmentofEconomicDevelopmentEnvironmentandTourismLimpopo: {
-      title: 'Department of Economic Development, Environment and Tourism Limpopo',
-      description: 'SUPPLY AND DELIVERY OF LAWN MOWER',
+    },
+    DepartmentofEconomicDevelopmentEnvironmentandTourismLimpopo: {
+      title: 'Department of Economic Development, Environment and Tourism Limpopo',
+      description: 'SUPPLY AND DELIVERY OF LAWN MOWER',
       location: 'Limpopo',
       date: 'March 2025',
       type: 'Supply of Office Stationery, Furniture & Equipments',
       images: [
         'images/Projects/grass machine/IMG-20251106-WA0026.jpg',
         'images/Projects/grass machine/IMG-20251106-WA0027.jpg',
-        'images/Projects/grass machine/IMG-20251106-WA0029.jpg',
-        
+        'images/Projects/grass machine/IMG-20251106-WA0029.jpg'
       ]
-    }
-    ,
+    },
     LimpopoDepartmentofTransportAndCommunitySafety: {
       title: 'Limpopo Department of Transport And Community Safety',
-      description: 'Replacement of vinyl floor for Modular office at Nebo Traffic Station',
+      description: 'Replacement of vinyl floor for Modular office at Nebo Traffic Station',
       location: 'Nebo, Limpopo',
       date: 'March 2025',
       type: 'Maintenance Of Mobile Offices',

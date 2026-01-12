@@ -1,3 +1,8 @@
+/* Hide swipe hint by default (desktop) */
+.projects-swipe-hint {
+  display: none;
+}
+
 /* Mobile-only overrides to make modal content static and fit viewport */
 @media (max-width: 900px) {
   /* General modal container: full-screen fit without internal scrolling */
@@ -55,7 +60,7 @@
     width: 56px;
     height: 40px;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   /* Info area: reduce spacing and font sizes to keep everything static */
