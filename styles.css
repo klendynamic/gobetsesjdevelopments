@@ -41,7 +41,7 @@ body{
 /* Slightly smaller logo on very small screens to ensure it fits nicely below nav */
 @media (max-width:480px){
   .logo-img{width: 115px}
-  .logo-img{height: 48px;}
+  .logo-img{height: 35px;}
 }
 .nav-links{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
 .nav-links a{
@@ -331,6 +331,7 @@ body{
 @media (max-width:899px){
   .projects-carousel{position:relative;margin-top:1rem}
   .projects-carousel{overflow:visible}
+  .projects-prev, .projects-next{display:none}
   #projects .container{max-width:1400px;width:92%;margin:0 auto}
   .projects-track{display:flex;gap:0.75rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0.8rem 1rem;scroll-padding-inline:1rem}
   .projects-track::-webkit-scrollbar{display:none}
@@ -344,7 +345,7 @@ body{
     right:0;
     bottom:0;
     background:rgba(5,57,37,0.85);
-    color:#fff;
+    color:#ffffff;
     padding:0.8rem 0;
     font-weight:600;
     text-align:center;
