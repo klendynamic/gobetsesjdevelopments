@@ -40,8 +40,8 @@ body{
 
 /* Slightly smaller logo on very small screens to ensure it fits nicely below nav */
 @media (max-width:480px){
-  .logo-img{width: 110px}
-  .logo-img{height: 62px;}
+  .logo-img{width: 115px}
+  .logo-img{height: 48px;}
 }
 .nav-links{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
 .nav-links a{
@@ -339,9 +339,17 @@ body{
   /* Mobile: use square images as well so width and height stay consistent */
   .project-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 240ms ease}
   .project figcaption{
-    position:absolute;left:0;right:0;top:50%;
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
     background:rgba(5,57,37,0.85);
-    color:#fff;padding:0.8rem 0;font-weight:600;text-align:center;transform:translateY(-50%);font-size:1.1rem;
+    color:#fff;
+    padding:0.8rem 0;
+    font-weight:600;
+    text-align:center;
+    font-size:1.1rem;
+    z-index:2;
   }
 
   /* Give the overlay a tiny horizontal inset so text doesn't hug the edges on narrow images */
