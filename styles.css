@@ -40,8 +40,8 @@ body{
 
 /* Slightly smaller logo on very small screens to ensure it fits nicely below nav */
 @media (max-width:480px){
-  .logo-img{width: 105px}
-  .logo-img{height: 70px;}
+  .logo-img{width: 110px}
+  .logo-img{height: 62px;}
 }
 .nav-links{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
 .nav-links a{
