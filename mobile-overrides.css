@@ -8,7 +8,7 @@
     height: calc(100vh - 12px);
     max-height: 70vh;
     margin: 12px 0;
-    border-radius: 1px;
+    border-radius: 10px;
     overflow: hidden; /* prevent internal scrollbars */
     box-shadow: none;
   }
@@ -103,4 +103,28 @@
 
   /* Ensure the overlay uses start alignment so modal sits nicely on small screens */
   .modal .modal-overlay { align-items: flex-start; }
+
+  /* Projects swipe hint styling */
+  .projects-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    font-size: 0.9rem;
+    color: #053925;
+    text-align: center;
+  }
+
+  .projects-swipe-hint .swipe-arrow {
+    font-size: 1.2rem;
+    display: inline-block;
+    animation: swipePulse 1s ease-in-out infinite;
+  }
+
+  @keyframes swipePulse {
+    0% { transform: translateX(0); opacity: 0.9; }
+    50% { transform: translateX(8px); opacity: 1; }
+    100% { transform: translateX(0); opacity: 0.9; }
+  }
 }

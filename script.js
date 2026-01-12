@@ -184,10 +184,10 @@ document.addEventListener('DOMContentLoaded', function(){
       type: 'General Building',
       images: [
         'images/projects/Kgomotlou/DJI_0097.JPG',
-        'images/projects/Kgomotlou/DJI_0440.JPG',
         'images/projects/Kgomotlou/DJI_0379.JPG',
-        'images/projects/Kgomotlou/DJI_0444.JPG',
-        'images/Projects/Kgomotlou/DJI_0439.JPG'
+        'images/projects/Kgomotlou/DJI_0439.JPG',
+        'images/projects/Kgomotlou/DJI_0440.JPG',
+        'images/Projects/Kgomotlou/DJI_0442.JPG'
       ]
     },
     pitsaneng: {
